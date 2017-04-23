@@ -1,0 +1,29 @@
+From 1625c67a8a40a943a368c7509da83686ff774833 Mon Sep 17 00:00:00 2001
+From: Mohammed Gamal <m.gamal005@gmail.com>
+Date: Wed, 14 May 2014 20:06:03 +0200
+Subject: [PATCH] [88a35103c0cc] Change makefile to include "eudyptula" string
+
+For the eudyptula challenge.
+Change make file version string to include "eudyptula"
+
+Signed-off-by: Mohammed Gamal <m.gamal005@gmail.com>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8a8440a..f20bb63 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ VERSION = 3
+ PATCHLEVEL = 15
+ SUBLEVEL = 0
+-EXTRAVERSION = -rc5
++EXTRAVERSION = -rc5-eudyptula
+ NAME = Shuffling Zombie Juror
+ 
+ # *DOCUMENTATION*
+-- 
+1.9.1
+
