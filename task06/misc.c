@@ -17,11 +17,17 @@ static ssize_t misc_read(struct file *filp,
 		loff_t *offset)
 {
 	ssize_t ret;
-	
+
 	ret = simple_read_from_buffer(buffer, len, offset, id, strlen(id));
 	if (ret < 0)
 		return ret;
+
 	pr_info("misc: reading buffer %s, ret=%lu, len=%lu\n", id, ret, len);
+
+	/* Append new line to buffer before returning */
+	if (copy_to_user(buffer + (strlen(id)-1), "\n", 2) < 0)
+		return -1;
+
 	return ret;
 }
 
@@ -43,7 +49,7 @@ static ssize_t misc_write(struct file *filp,
 
 	pr_info("misc: writing buffer: %s\n", tmp);
 
-	if (strcmp(id, tmp) != 0)
+	if (strncmp(id, tmp, len - 1) != 0)
 		return -EINVAL;
 
 	return len;
