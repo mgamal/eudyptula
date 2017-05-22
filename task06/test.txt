@@ -1,0 +1,15 @@
+mgamal@millenium-falcon:~/code/eudyptula/task06$ sudo modprobe misc
+mgamal@millenium-falcon:~/code/eudyptula/task06$ cat /dev/eudyptula 
+cat: /dev/eudyptula: Permission denied
+mgamal@millenium-falcon:~/code/eudyptula/task06$ sudo -i
+root@millenium-falcon:~# cat /dev/eudyptula 
+88a35103c0ccroot@millenium-falcon:~# echo "88a35103c0cc" > /dev/eudyptula 
+root@millenium-falcon:~# echo $?
+0
+root@millenium-falcon:~# echo "foobar" > /dev/eudyptula 
+-bash: echo: write error: Invalid argument
+root@millenium-falcon:~# echo $?
+1
+root@millenium-falcon:~# echo "88a35103c0cc" > /dev/eudyptula 
+root@millenium-falcon:~# echo $?
+0
