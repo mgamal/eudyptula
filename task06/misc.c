@@ -22,7 +22,7 @@ static ssize_t misc_read(struct file *filp,
 	if (ret < 0)
 		return ret;
 
-	pr_info("misc: reading buffer %s, ret=%lu, len=%lu\n", id, ret, len);
+	pr_debug("misc: reading buffer %s, ret=%lu, len=%lu\n", id, ret, len);
 
 	/* Append new line to buffer before returning */
 	if (copy_to_user(buffer + (strlen(id)-1), "\n", 2) < 0)
@@ -47,7 +47,7 @@ static ssize_t misc_write(struct file *filp,
 	if (ret < 0)
 		return ret;
 
-	pr_info("misc: writing buffer: %s\n", tmp);
+	pr_debug("misc: writing buffer: %s\n", tmp);
 
 	if (strncmp(id, tmp, len - 1) != 0)
 		return -EINVAL;
