@@ -86,6 +86,9 @@ static int hello_init(void)
 		return -1;
 	}
 
+	if (!debugfs_create_u64("jiffies", 0444, parent_dir, (u64 *)&jiffies))
+		return -1;
+
 	return 0;
 }
 
